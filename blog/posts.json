@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "insead",
+    "entry_no": "015",
+    "title": "Not the Ball, But the Fiat",
+    "dek": "Not the ballroom, but the Fiat ride. A reflection on community, loyalty, and why authentic connection matters more than rituals.",
+    "category": "Humanity",
+    "category_slug": "humanity",
+    "date_iso": "2026-07-04",
+    "date_display": "04 JUL",
+    "read_time": "2 min read"
+  },
+  {
+    "slug": "mulai",
+    "entry_no": "014",
+    "title": "Mulai: Building Human Bonds Through Gigs",
+    "dek": "Mulai means sprout in Tamil. Built to address the human side of gig work that a timesheet can never capture.",
+    "category": "Entrepreneurship",
+    "category_slug": "entrepreneurship",
+    "date_iso": "2026-06-13",
+    "date_display": "13 JUN",
+    "read_time": "3 min read"
+  },
+  {
+    "slug": "unconsciousbias",
+    "entry_no": "013",
+    "title": "People Before Profits: What Purpose Does and Does Not Fix",
+    "dek": "Nine volunteers, sixteen-hour days, and a lesson in how autopilot ego survives even the most selfless service.",
+    "category": "Entrepreneurship",
+    "category_slug": "entrepreneurship",
+    "date_iso": "2026-05-30",
+    "date_display": "30 MAY",
+    "read_time": "3 min read"
+  },
+  {
+    "slug": "clock",
+    "entry_no": "012",
+    "title": "Clocked Wrong: From Bullshit Jobs to Rapid Prototyping",
+    "dek": "Attendance became the main measure of pay for white-collar work. Finding an alternative without creating more free riders is the real challenge.",
+    "category": "Work",
+    "category_slug": "work",
+    "date_iso": "2026-05-13",
+    "date_display": "13 MAY",
+    "read_time": "4 min read"
+  },
+  {
+    "slug": "partnership",
+    "entry_no": "011",
+    "title": "Partnerships in the AI Era: Human Connection Beyond Reciprocation",
+    "dek": "Three scenes on why partnership beats going it alone. Not for efficiency. For the relief of not carrying everything alone.",
+    "category": "Humanity",
+    "category_slug": "humanity",
+    "date_iso": "2026-04-25",
+    "date_display": "25 APR",
+    "read_time": "3 min read"
+  },
+  {
+    "slug": "vidai",
+    "entry_no": "010",
+    "title": "Introducing Vidai: Organic and Bootstrapped",
+    "dek": "Vidai, seed in Tamil. Grown through patience and organic action, not capital.",
+    "category": "Entrepreneurship",
+    "category_slug": "entrepreneurship",
+    "date_iso": "2026-04-11",
+    "date_display": "11 APR",
+    "read_time": "4 min read"
+  },
+  {
+    "slug": "whybeforewhat",
+    "entry_no": "009",
+    "title": "The Silence Before the Answer",
+    "dek": "A last walk out of an office after seventeen years, and the quiet before deciding what comes next.",
+    "category": "Work",
+    "category_slug": "work",
+    "date_iso": "2026-03-28",
+    "date_display": "28 MAR",
+    "read_time": "3 min read"
+  },
+  {
+    "slug": "heroes",
+    "entry_no": "008",
+    "title": "A Happy People Have No Need of Heroes",
+    "dek": "A mural in Orgosolo, Sardinia, and what it says about privilege, systems, and the myth of exceptional people.",
+    "category": "Humanity",
+    "category_slug": "humanity",
+    "date_iso": "2026-03-14",
+    "date_display": "14 MAR",
+    "read_time": "4 min read"
+  },
+  {
+    "slug": "kovai",
+    "entry_no": "007",
+    "title": "Coimbatore: Industry in Its Bones, Hospitality in Its Heart",
+    "dek": "A city that works relentlessly yet welcomes warmly.",
+    "category": "Entrepreneurship",
+    "category_slug": "entrepreneurship",
+    "date_iso": "2026-02-28",
+    "date_display": "28 FEB",
+    "read_time": "3 min read"
+  },
+  {
+    "slug": "purposefulpivot",
+    "entry_no": "006",
+    "title": "When Stability Stops Scaling: A Mid Career Pivot",
+    "dek": "For most of my life I did exactly what I was supposed to do. Then the risk landscape changed.",
+    "category": "Entrepreneurship",
+    "category_slug": "entrepreneurship",
+    "date_iso": "2026-02-14",
+    "date_display": "14 FEB",
+    "read_time": "2 min read"
+  },
+  {
+    "slug": "capitalandclock",
+    "entry_no": "005",
+    "title": "You Clock In. Capital Never Clocks Out.",
+    "dek": "Time as a unit of measure is letting down labor. The compounding effect of capital, and its uneven distribution, is the real story.",
+    "category": "Work",
+    "category_slug": "work",
+    "date_iso": "2026-01-31",
+    "date_display": "31 JAN",
+    "read_time": "2 min read"
+  },
+  {
+    "slug": "saasobituary",
+    "entry_no": "004",
+    "title": "Software in the AI Era: From SaaS to Open Source",
+    "dek": "SaaS is not failing, but it is showing clear signs of slowing under its own weight.",
+    "category": "Technology",
+    "category_slug": "technology",
+    "date_iso": "2026-01-17",
+    "date_display": "17 JAN",
+    "read_time": "3 min read"
+  },
+  {
+    "slug": "mse",
+    "entry_no": "003",
+    "title": "Quality in 3D: Maturity, Simplicity and Effectiveness",
+    "dek": "A framework built from three years inside some of the most tangled processes in a large organization.",
+    "category": "Process & Data",
+    "category_slug": "process-data",
+    "date_iso": "2026-01-03",
+    "date_display": "03 JAN",
+    "read_time": "2 min read"
+  },
+  {
+    "slug": "institutionalmemory",
+    "entry_no": "002",
+    "title": "Human Institutional Memory in the AI Era — And Why It Matters",
+    "dek": "AI couldn't retrieve the names of our past CDIOs from the public internet. That gap is worth paying attention to.",
+    "category": "Process & Data",
+    "category_slug": "process-data",
+    "date_iso": "2025-12-19",
+    "date_display": "19 DEC",
+    "read_time": "2 min read"
+  },
+  {
+    "slug": "moralityinvipassana",
+    "entry_no": "001",
+    "title": "Beyond Breath and Equanimity: Rediscovering Vipassana",
+    "dek": "Samādhi and Paññā get all the attention in meditation circles. Sīla, the moral foundation, is the part most people skip.",
+    "category": "Humanity",
+    "category_slug": "humanity",
+    "date_iso": "2025-11-10",
+    "date_display": "10 NOV",
+    "read_time": "2 min read"
+  }
+]

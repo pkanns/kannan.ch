@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Post Generator — kannan.ch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDE7D6; --paper-deep:#E4DCC5; --ink:#22261B; --ink-soft:#4A4F3E;
+  --moss:#3C5A41; --moss-deep:#2B4230; --mustard:#B98A2E; --rust:#8A3B28;
+  --rule: rgba(34,38,27,0.16);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Spectral',serif;padding:40px 24px 100px;}
+.wrap{max-width:760px;margin:0 auto;}
+h1{font-size:28px;font-weight:600;margin:0 0 6px;}
+h1 em{font-style:italic;color:var(--moss-deep);}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);margin:0 0 32px;}
+.field{margin-bottom:20px;}
+label{display:block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--moss-deep);margin-bottom:6px;}
+.hint{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);margin-top:4px;}
+input[type=text], input[type=date], select, textarea{
+  width:100%;padding:11px 12px;border:1px solid var(--rule);border-radius:4px;
+  background:#fff;font-family:'Spectral',serif;font-size:15px;color:var(--ink);
+}
+textarea{min-height:120px;resize:vertical;line-height:1.6;}
+textarea#bodyText{min-height:340px;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.slug-preview{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--moss-deep);margin-top:6px;word-break:break-all;}
+button{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;
+  background:var(--moss-deep);color:var(--paper);border:none;padding:14px 24px;border-radius:4px;cursor:pointer;
+  margin-right:12px;margin-top:10px;
+}
+button.secondary{background:transparent;color:var(--moss-deep);border:1.5px solid var(--moss-deep);}
+button:hover{opacity:0.85;}
+.output{margin-top:36px;padding-top:28px;border-top:1px dashed var(--rule);display:none;}
+.output.show{display:block;}
+.output h2{font-size:18px;margin:0 0 8px;}
+.output p.instructions{font-size:14.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 16px;}
+.copybox{
+  background:#fff;border:1px solid var(--rule);border-radius:4px;padding:14px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;white-space:pre-wrap;word-break:break-all;
+  max-height:220px;overflow-y:auto;margin-bottom:10px;
+}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--mustard);color:#fff;border-radius:50%;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;margin-right:8px;}
+fieldset{border:1px solid var(--rule);border-radius:6px;padding:20px;margin-bottom:24px;}
+legend{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--rust);padding:0 8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>New post <em>generator</em></h1>
+  <p class="sub">Fill this in, click generate, download the two files, upload them to GitHub. No code. <a href="how-to-publish.html" style="color:var(--moss-deep);">Full walkthrough &rarr;</a></p>
+
+  <fieldset>
+    <legend>The essentials</legend>
+    <div class="field">
+      <label for="title">Title</label>
+      <input type="text" id="title" placeholder="e.g. Not the Ball, But the Fiat">
+    </div>
+    <div class="field">
+      <label for="slug">URL slug (auto-suggested — edit if you want)</label>
+      <input type="text" id="slug" placeholder="not-the-ball-but-the-fiat">
+      <div class="slug-preview" id="slugPreview">kannan.ch/blog/…</div>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label for="category">Category</label>
+        <select id="category">
+          <option>Technology</option>
+          <option>Process &amp; Data</option>
+          <option>Work</option>
+          <option selected>Entrepreneurship</option>
+          <option>Humanity</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="date">Publish date</label>
+        <input type="date" id="date">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>SEO &amp; sharing</legend>
+    <div class="field">
+      <label for="dek">Meta description (also shown on the index page — one or two sentences, the hook)</label>
+      <textarea id="dek" placeholder="A reflection on community, loyalty, and why authentic connection matters more than rituals."></textarea>
+    </div>
+    <div class="field">
+      <label for="tags">Tags (comma separated — used as keywords)</label>
+      <input type="text" id="tags" placeholder="Belonging, Community, Loyalty, INSEAD">
+    </div>
+    <div class="field">
+      <label for="imageExt">Image file type</label>
+      <select id="imageExt" onchange="updateImagePreview()">
+        <option value="png">.png</option>
+        <option value="jpg">.jpg</option>
+        <option value="webp">.webp</option>
+        <option value="avif">.avif</option>
+      </select>
+      <div class="hint" id="imagePathPreview">/assets/images/blog/…</div>
+      <div class="hint">Upload the actual image file to this exact path in GitHub before or right after you commit the post — the path is auto-derived from the slug, so you just need to name your local file to match.</div>
+    </div>
+    <div class="field">
+      <label for="imageAlt">Image alt text (describe the image plainly — helps SEO and accessibility)</label>
+      <input type="text" id="imageAlt" placeholder="A vintage Fiat parked on a cobblestone street at dusk">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>The writing</legend>
+    <div class="field">
+      <label for="bodyText">Paste your post text here (from your ODT file). Leave a blank line between paragraphs — that's the only formatting rule.</label>
+      <textarea id="bodyText"></textarea>
+      <div class="hint" id="readTimeHint">Estimated read time: —</div>
+    </div>
+  </fieldset>
+
+  <button onclick="generate()">Generate files</button>
+
+  <div class="output" id="output">
+    <h2><span class="step-num">0</span>Upload the hero image first</h2>
+    <p class="instructions">Rename your image file to <code id="imageFileHint">[slug].png</code> and upload it to <code>/assets/images/blog/</code> in GitHub (Add file → Upload files). Do this before or right after the post itself — the post page already points at this exact path.</p>
+
+    <h2><span class="step-num">1</span>Post page — download and add to the repo</h2>
+    <p class="instructions">Download this file, then in GitHub go to your repo → <strong>Add file → Create new file</strong> → name it <code id="pathHint">blog/[slug]/index.html</code> → paste the contents in → commit.</p>
+    <button onclick="downloadPostHtml()">Download post HTML</button>
+    <button class="secondary" onclick="copyToClipboard('postHtmlBox')">Copy instead</button>
+    <div class="copybox" id="postHtmlBox" style="margin-top:14px;"></div>
+
+    <h2 style="margin-top:32px;"><span class="step-num">2</span>Add this to posts.json</h2>
+    <p class="instructions">Open <code>blog/posts.json</code> in GitHub's web editor, click the pencil icon, and paste this new entry into the array (add a comma after the existing last entry, then paste this block before the closing <code>]</code>). Commit.</p>
+    <div class="copybox" id="jsonSnippetBox"></div>
+    <button class="secondary" onclick="copyToClipboard('jsonSnippetBox')">Copy JSON snippet</button>
+  </div>
+</div>
+
+<script>
+document.getElementById('date').valueAsDate = new Date();
+
+function slugify(text){
+  return text.toLowerCase().trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+document.getElementById('title').addEventListener('input', function(){
+  if (!document.getElementById('slug').dataset.manual) {
+    document.getElementById('slug').value = slugify(this.value);
+    updateSlugPreview();
+  }
+});
+document.getElementById('slug').addEventListener('input', function(){
+  this.dataset.manual = 'true';
+  updateSlugPreview();
+});
+function updateSlugPreview(){
+  const s = document.getElementById('slug').value || '…';
+  document.getElementById('slugPreview').textContent = 'kannan.ch/blog/' + s + '/';
+  updateImagePreview();
+}
+function updateImagePreview(){
+  const s = document.getElementById('slug').value || '[slug]';
+  const ext = document.getElementById('imageExt').value;
+  document.getElementById('imagePathPreview').textContent = '/assets/images/blog/' + s + '.' + ext;
+}
+
+document.getElementById('bodyText').addEventListener('input', function(){
+  const words = this.value.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  document.getElementById('readTimeHint').textContent = 'Estimated read time: ' + minutes + ' min read (' + words + ' words)';
+});
+
+function esc(s){
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function paragraphsToHtml(text){
+  return text.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean)
+    .map(p => '<p>' + esc(p).replace(/\n/g, '<br>') + '</p>').join('\n      ');
+}
+
+function dateDisplay(iso){
+  const d = new Date(iso + 'T00:00:00');
+  const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  return String(d.getDate()).padStart(2,'0') + ' ' + months[d.getMonth()];
+}
+
+const CATEGORY_SLUGS = {
+  'Technology':'technology','Process & Data':'process-data','Work':'work',
+  'Entrepreneurship':'entrepreneurship','Humanity':'humanity'
+};
+
+let lastPostHtml = '';
+let lastSlug = '';
+
+function generate(){
+  const title = document.getElementById('title').value.trim();
+  const slug = document.getElementById('slug').value.trim() || slugify(title);
+  const category = document.getElementById('category').value;
+  const catSlug = CATEGORY_SLUGS[category];
+  const dateIso = document.getElementById('date').value;
+  const dek = document.getElementById('dek').value.trim();
+  const tags = document.getElementById('tags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  const imageExt = document.getElementById('imageExt').value;
+  const image = '/assets/images/blog/' + slug + '.' + imageExt;
+  const imageAlt = document.getElementById('imageAlt').value.trim();
+  const bodyText = document.getElementById('bodyText').value;
+  const words = bodyText.trim().split(/\s+/).filter(Boolean).length;
+  const readTime = Math.max(1, Math.round(words / 200)) + ' min read';
+  const dateDisp = dateDisplay(dateIso);
+
+  if (!title || !slug || !dateIso) {
+    alert('Please fill in at least the title, slug, and date.');
+    return;
+  }
+
+  const schema = {
+    "@context":"https://schema.org","@type":"BlogPosting","headline":title,"description":dek,
+    "datePublished":dateIso,
+    "author":{"@type":"Person","name":"Kannan Palani","url":"https://kannan.ch",
+      "sameAs":["https://www.linkedin.com/in/pkanns/","https://vidai.ch","https://mulai.ch","https://twitter.com/pkanns"]},
+    "publisher":{"@type":"Person","name":"Kannan Palani"},
+    "mainEntityOfPage":"https://kannan.ch/blog/"+slug+"/",
+    "keywords": tags.join(', ')
+  };
+  if (image) schema.image = image;
+
+  const hero = image ? `<div class="hero-image">
+      <img src="${esc(image)}" alt="${esc(imageAlt)}" loading="lazy">
+    </div>` : '';
+
+  const postHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(title)} | Kannan Palani</title>
+<meta name="description" content="${esc(dek)}">
+<link rel="canonical" href="https://kannan.ch/blog/${slug}/">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(dek)}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kannan.ch/blog/${slug}/">
+${image ? `<meta property="og:image" content="${esc(image)}">` : ''}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">${JSON.stringify(schema)}<\/script>
+<script defer data-domain="kannan.ch" src="https://plausible.io/js/script.js"><\/script>
+<style>
+:root{--paper:#EDE7D6;--paper-deep:#E4DCC5;--ink:#22261B;--ink-soft:#4A4F3E;--moss:#3C5A41;--moss-deep:#2B4230;--mustard:#B98A2E;--rust:#8A3B28;--rule:rgba(34,38,27,0.16);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:'Spectral',serif;-webkit-font-smoothing:antialiased;position:relative;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:0.05;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+.article-wrap{max-width:680px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+header{border-bottom:1px solid var(--rule);padding:20px 0;}
+header .wrap{display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:19px;font-weight:600;letter-spacing:-0.01em;}
+.logo em{font-style:italic;color:var(--moss);}
+nav.primary{display:flex;align-items:center;gap:30px;}
+nav.primary .links{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+nav.primary .links a.active{color:var(--ink);border-bottom:1.5px solid var(--mustard);padding-bottom:2px;}
+.backline{padding:22px 0 0;}
+.backline a{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px;}
+.backline a:hover{color:var(--ink);}
+article header.post-head{border:none;padding:26px 0 0;}
+.post-head .stamp-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);flex-wrap:wrap;}
+.post-head .cat-badge{color:var(--moss-deep);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--moss-deep);padding:3px 9px;border-radius:2px;}
+.post-head .date-badge{display:inline-block;border:1.5px solid var(--rust);color:var(--rust);font-weight:600;letter-spacing:0.03em;padding:3px 8px;transform:rotate(-2deg);border-radius:2px;}
+.post-head h1{font-size:38px;line-height:1.15;font-weight:600;margin:0 0 14px;letter-spacing:-0.01em;}
+.post-head .dek{font-size:17px;color:var(--ink-soft);line-height:1.6;margin:0 0 26px;max-width:58ch;}
+.hero-image{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-height:440px;overflow:hidden;margin-bottom:36px;}
+.hero-image img{width:100%;height:100%;object-fit:cover;display:block;}
+.post-body{font-size:18px;line-height:1.75;color:var(--ink);}
+.post-body p{margin:0 0 22px;}
+.share{margin-top:52px;padding-top:24px;border-top:1px dashed var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.share .label{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);letter-spacing:0.05em;text-transform:uppercase;}
+.share .icons{display:flex;gap:10px;}
+.share .icons a{width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .15s ease, color .15s ease;color:var(--ink-soft);}
+.share .icons a:hover{border-color:var(--moss-deep);color:var(--moss-deep);}
+.share .icons svg{width:16px;height:16px;}
+footer{border-top:1px solid var(--rule);padding:28px 0;margin-top:60px;}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+footer a:hover{color:var(--ink);}
+@media (max-width:760px){.post-head h1{font-size:29px;}.hero-image{max-height:260px;}.post-body{font-size:16.5px;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">Kannan <em>Palani</em></a>
+    <nav class="primary"><div class="links"><a href="/">Home</a><a class="active" href="/blog">Blog</a></div></nav>
+  </div>
+</header>
+<div class="article-wrap">
+  <div class="backline"><a href="/blog">&larr; All entries</a></div>
+  <article>
+    <header class="post-head">
+      <div class="stamp-row">
+        <span class="cat-badge">${esc(category)}</span>
+        <span class="date-badge">${dateDisp}</span>
+        <span>${readTime}</span>
+      </div>
+      <h1>${esc(title)}</h1>
+      <p class="dek">${esc(dek)}</p>
+    </header>
+    ${hero}
+    <div class="post-body">
+      ${paragraphsToHtml(bodyText)}
+    </div>
+    <div class="share">
+      <span class="label">Share this entry</span>
+      <div class="icons">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://kannan.ch/blog/${slug}/" aria-label="Share on LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v1.98h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.66c0-1.59-.03-3.63-2.21-3.63-2.22 0-2.56 1.73-2.56 3.52V23h-4V8.5z"/></svg>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://kannan.ch/blog/${slug}/&text=${encodeURIComponent(title)}" aria-label="Share on X" title="X / Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.6l8.1-9.3L1 2h7l4.8 6.3L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+        </a>
+        <a href="#" aria-label="Copy link" title="Copy link" class="copy-link" data-url="https://kannan.ch/blog/${slug}/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1.5-1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="wrap">
+    <div>© 2026 KANNAN PALANI</div>
+    <div style="display:flex;gap:18px;"><a href="https://www.linkedin.com/in/pkanns/">LINKEDIN</a><a href="/blog/feed.xml">RSS</a><a href="https://twitter.com/pkanns">X</a></div>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.copy-link').forEach(function(el){
+  el.addEventListener('click', function(e){
+    e.preventDefault();
+    navigator.clipboard.writeText(el.dataset.url);
+    el.style.color = 'var(--moss-deep)';
+  });
+});
+<\/script>
+</body>
+</html>`;
+
+  // Figure out next entry number by asking — simplest: leave it to be edited, default incremented isn't knowable client-side without posts.json.
+  const jsonSnippet = {
+    "slug": slug,
+    "entry_no": "0XX",
+    "title": title,
+    "dek": dek,
+    "category": category,
+    "category_slug": catSlug,
+    "date_iso": dateIso,
+    "date_display": dateDisp,
+    "read_time": readTime
+  };
+
+  lastPostHtml = postHtml;
+  lastSlug = slug;
+
+  document.getElementById('pathHint').textContent = 'blog/' + slug + '/index.html';
+  document.getElementById('imageFileHint').textContent = slug + '.' + imageExt;
+  document.getElementById('postHtmlBox').textContent = postHtml;
+  document.getElementById('jsonSnippetBox').textContent = JSON.stringify(jsonSnippet, null, 2) + '\n\n// NOTE: replace "0XX" above with the next entry number\n// (check the top entry currently in posts.json and add one).';
+  document.getElementById('output').classList.add('show');
+  document.getElementById('output').scrollIntoView({behavior:'smooth'});
+}
+
+function downloadPostHtml(){
+  if (!lastPostHtml) { alert('Click "Generate files" first.'); return; }
+  const blob = new Blob([lastPostHtml], {type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index.html';
+  a.click();
+}
+
+function copyToClipboard(id){
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text);
+  alert('Copied.');
+}
+</script>
+</body>
+</html>

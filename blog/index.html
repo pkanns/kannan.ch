@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Kannan Palani</title>
+<meta name="description" content="Fortnightly notes on entrepreneurship, labor, Tamil diaspora identity and philosophy, from Vidai and Mulai's founder.">
+<link rel="canonical" href="https://kannan.ch/blog">
+<meta property="og:title" content="Blog | Kannan Palani">
+<meta property="og:description" content="Fortnightly notes on entrepreneurship, labor, Tamil diaspora identity and philosophy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kannan.ch/blog">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script defer data-domain="kannan.ch" src="https://plausible.io/js/script.js"></script>
+<style>
+:root{
+  --paper:#EDE7D6; --paper-deep:#E4DCC5; --ink:#22261B; --ink-soft:#4A4F3E;
+  --moss:#3C5A41; --moss-deep:#2B4230; --mustard:#B98A2E; --rust:#8A3B28;
+  --rule: rgba(34,38,27,0.16);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:'Spectral',serif;-webkit-font-smoothing:antialiased;position:relative;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:0.05;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+header{border-bottom:1px solid var(--rule);padding:20px 0;}
+header .wrap{display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:19px;font-weight:600;letter-spacing:-0.01em;}
+.logo em{font-style:italic;color:var(--moss);}
+nav.primary{display:flex;align-items:center;gap:30px;}
+nav.primary .links{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+nav.primary .links a.active{color:var(--ink);border-bottom:1.5px solid var(--mustard);padding-bottom:2px;}
+.hero{padding:52px 0 20px;display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:center;}
+.hero .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.10em;text-transform:uppercase;color:var(--rust);margin-bottom:16px;}
+.hero h1{font-size:44px;line-height:1.12;font-weight:500;margin:0 0 18px;letter-spacing:-0.01em;}
+.hero h1 em{font-style:italic;color:var(--moss-deep);}
+.hero p.lede{font-size:16.5px;color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0;}
+.ring-wrap{display:flex;align-items:center;justify-content:center;}
+.ring-wrap svg{width:100%;height:auto;max-width:260px;}
+.ring-caption{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);text-align:center;margin-top:8px;letter-spacing:0.04em;}
+.tabs{display:flex;gap:2px;margin:36px 0 0;border-bottom:1px solid var(--rule);overflow-x:auto;}
+.tab{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.03em;text-transform:uppercase;padding:11px 18px;color:var(--ink-soft);white-space:nowrap;border:1px solid var(--rule);border-bottom:none;background:var(--paper-deep);cursor:pointer;position:relative;top:1px;}
+.tab.active{background:var(--paper);color:var(--ink);border-color:var(--ink);border-bottom:1px solid var(--paper);font-weight:600;}
+.tab .n{color:var(--mustard);margin-right:6px;}
+.ledger{padding:30px 0 90px;min-height:200px;}
+.entry{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:30px 0;border-bottom:1px dashed var(--rule);}
+.entry:first-child{padding-top:10px;}
+.entry .stamp{font-family:'IBM Plex Mono',monospace;display:flex;flex-direction:column;gap:8px;}
+.entry .no{font-size:11px;color:var(--ink-soft);letter-spacing:0.02em;}
+.entry .date-badge{display:inline-block;border:1.5px solid var(--rust);color:var(--rust);font-size:11px;font-weight:600;letter-spacing:0.03em;padding:5px 8px;text-align:center;transform:rotate(-2deg);width:fit-content;border-radius:2px;}
+.entry .cat{font-size:10.5px;color:var(--moss-deep);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;}
+.entry h2{font-size:24px;font-weight:600;line-height:1.28;margin:0 0 10px;letter-spacing:-0.005em;}
+.entry h2 a{border-bottom:1px solid transparent;transition:border-color .15s ease;}
+.entry h2 a:hover{border-color:var(--mustard);}
+.entry p.excerpt{font-size:15px;line-height:1.65;color:var(--ink-soft);margin:0 0 12px;max-width:62ch;}
+.entry .footline{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);}
+.entry .footline .leader{flex:1;border-bottom:1px dotted var(--rule);height:1px;margin:0 4px;}
+.entry .footline .read{color:var(--moss-deep);font-weight:600;}
+.empty-state{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink-soft);padding:40px 0;text-align:center;}
+footer{border-top:1px solid var(--rule);padding:28px 0;margin-top:60px;}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+footer a:hover{color:var(--ink);}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;}
+  .ring-wrap{order:-1;max-width:180px;margin:0 auto;}
+  .entry{grid-template-columns:1fr;gap:12px;}
+  .hero h1{font-size:32px;}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">Kannan <em>Palani</em></a>
+    <nav class="primary">
+      <div class="links"><a href="/">Home</a><a class="active" href="/blog">Blog</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="display:contents;">
+    <div>
+      <div class="eyebrow">Entry log — fortnightly</div>
+      <h1>Seed, sprout, <em>and the record between.</em></h1>
+      <p class="lede">Notes on entrepreneurship, labor, Tamil diaspora identity and philosophy — one ring added every two weeks.</p>
+    </div>
+    <div>
+      <div class="ring-wrap">
+        <svg viewBox="0 0 240 240" fill="none">
+          <circle cx="120" cy="120" r="18" stroke="#2B4230" stroke-width="2"/>
+          <circle cx="120" cy="120" r="34" stroke="#3C5A41" stroke-width="1.4"/>
+          <circle cx="120" cy="120" r="52" stroke="#4A5F42" stroke-width="1.1"/>
+          <circle cx="120" cy="120" r="72" stroke="#5C6E4F" stroke-width="1"/>
+          <circle cx="120" cy="120" r="94" stroke="#6E7C5A" stroke-width="0.9"/>
+          <circle cx="120" cy="120" r="112" stroke="#8A8F6E" stroke-width="0.8"/>
+          <g stroke-width="2.4" stroke-linecap="round">
+            <line x1="120" y1="8" x2="120" y2="18" stroke="#8A3B28"/>
+            <line x1="176" y1="24" x2="170" y2="32" stroke="#3C5A41"/>
+            <line x1="216" y1="64" x2="207" y2="70" stroke="#3C5A41"/>
+            <line x1="230" y1="120" x2="220" y2="120" stroke="#B98A2E"/>
+            <line x1="216" y1="176" x2="207" y2="170" stroke="#3C5A41"/>
+            <line x1="176" y1="216" x2="170" y2="207" stroke="#8A3B28"/>
+            <line x1="120" y1="230" x2="120" y2="220" stroke="#3C5A41"/>
+          </g>
+        </svg>
+      </div>
+      <div class="ring-caption" id="ring-caption">LOADING…</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-cat="all"><span class="n">00</span>All</div>
+    <div class="tab" data-cat="technology"><span class="n">01</span>Technology</div>
+    <div class="tab" data-cat="work"><span class="n">02</span>Work</div>
+    <div class="tab" data-cat="entrepreneurship"><span class="n">03</span>Entrepreneurship</div>
+    <div class="tab" data-cat="humanity"><span class="n">04</span>Humanity</div>
+    <div class="tab" data-cat="process-data"><span class="n">05</span>Process &amp; Data</div>
+  </div>
+</div>
+
+<section class="ledger">
+  <div class="wrap" id="entries">
+    <div class="empty-state">Loading entries…</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 KANNAN PALANI</div>
+    <div style="display:flex;gap:18px;">
+      <a href="https://www.linkedin.com/in/pkanns/">LINKEDIN</a>
+      <a href="/blog/feed.xml">RSS</a>
+      <a href="https://twitter.com/pkanns">X</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+let POSTS = [];
+let currentCat = 'all';
+
+function esc(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderEntries(){
+  const container = document.getElementById('entries');
+  const filtered = currentCat === 'all' ? POSTS : POSTS.filter(p => p.category_slug === currentCat);
+  if (filtered.length === 0){
+    container.innerHTML = '<div class="empty-state">Nothing here yet.</div>';
+    return;
+  }
+  container.innerHTML = filtered.map(p => `
+    <div class="entry" data-cat="${p.category_slug}">
+      <div class="stamp">
+        <span class="no">ENTRY ${p.entry_no}</span>
+        <span class="date-badge">${p.date_display}</span>
+        <span class="cat">${esc(p.category)}</span>
+      </div>
+      <div>
+        <h2><a href="/blog/${p.slug}/">${esc(p.title)}</a></h2>
+        <p class="excerpt">${esc(p.dek)}</p>
+        <div class="footline"><span>${esc(p.read_time)}</span><span class="leader"></span><a class="read" href="/blog/${p.slug}/">Read &rarr;</a></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+fetch('/blog/posts.json')
+  .then(r => r.json())
+  .then(data => {
+    POSTS = data.slice().sort((a,b) => b.date_iso.localeCompare(a.date_iso));
+    document.getElementById('ring-caption').textContent = POSTS.length + ' ENTRIES · YEAR ONE';
+    renderEntries();
+  })
+  .catch(err => {
+    document.getElementById('entries').innerHTML = '<div class="empty-state">Could not load entries. Check posts.json.</div>';
+    console.error(err);
+  });
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentCat = tab.dataset.cat;
+    renderEntries();
+  });
+});
+</script>
+</body>
+</html>

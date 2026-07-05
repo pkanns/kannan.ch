@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Publish a New Post — kannan.ch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDE7D6; --paper-deep:#E4DCC5; --ink:#22261B; --ink-soft:#4A4F3E;
+  --moss:#3C5A41; --moss-deep:#2B4230; --mustard:#B98A2E; --rust:#8A3B28;
+  --rule: rgba(34,38,27,0.16);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:'Spectral',serif;-webkit-font-smoothing:antialiased;position:relative;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:0.05;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+a{color:var(--moss-deep);}
+.wrap{max-width:720px;margin:0 auto;padding:56px 32px 100px;position:relative;z-index:1;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;}
+h1{font-size:36px;font-weight:600;margin:0 0 14px;letter-spacing:-0.01em;}
+h1 em{font-style:italic;color:var(--moss-deep);}
+p.lede{font-size:17px;color:var(--ink-soft);line-height:1.65;max-width:56ch;margin:0 0 44px;}
+.step{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:26px 0;border-bottom:1px dashed var(--rule);}
+.step:first-of-type{padding-top:0;}
+.step-num{
+  width:40px;height:40px;border-radius:50%;background:var(--moss-deep);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;
+  font-size:16px;font-weight:600;
+}
+.step h2{font-size:19px;font-weight:600;margin:6px 0 8px;letter-spacing:-0.005em;}
+.step p{font-size:15.5px;line-height:1.65;color:var(--ink);margin:0 0 10px;}
+.step p.sub{color:var(--ink-soft);font-size:14px;}
+code{
+  font-family:'IBM Plex Mono',monospace;background:var(--paper-deep);border:1px solid var(--rule);
+  padding:2px 6px;border-radius:3px;font-size:0.9em;
+}
+.callout{
+  background:var(--paper-deep);border-left:3px solid var(--mustard);border-radius:4px;
+  padding:14px 18px;margin:12px 0;font-size:14.5px;color:var(--ink-soft);line-height:1.6;
+}
+.callout strong{color:var(--ink);}
+.tool-link{
+  display:inline-flex;align-items:center;gap:8px;background:var(--moss-deep);color:var(--paper);
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:0.02em;
+  padding:12px 20px;border-radius:4px;text-decoration:none;margin-top:8px;
+}
+.tool-link:hover{opacity:0.88;}
+.section-title{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--rust);margin:56px 0 20px;
+}
+.checklist{list-style:none;padding:0;margin:0;}
+.checklist li{
+  display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:15px;color:var(--ink);
+}
+.checklist li::before{content:"—";color:var(--mustard);font-weight:600;}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--rule);font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Workflow — every two weeks</div>
+  <h1>How to publish a <em>new entry</em></h1>
+  <p class="lede">Seven steps, no code. Start to finish takes about ten minutes once you've done it twice.</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div>
+      <h2>Open the generator</h2>
+      <p>Open <code>tools/new-post-generator.html</code> in your browser — just double-click the file. No server, no install.</p>
+      <a class="tool-link" href="new-post-generator.html">Open the generator &rarr;</a>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div>
+      <h2>Fill in the form</h2>
+      <p>Title, category, a one-or-two-sentence meta description (the "dek"), tags, and image alt text.</p>
+      <p>Then paste your post text from the ODT file straight into the body box.</p>
+      <div class="callout"><strong>Only formatting rule:</strong> leave a blank line between paragraphs. That's how the tool knows where one paragraph ends and the next begins.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div>
+      <h2>Click "Generate files"</h2>
+      <p>The tool builds your slug automatically from the title (you can edit it), estimates the read time from your word count, and shows you the exact image filename it expects.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div>
+      <h2>Upload the image</h2>
+      <p>Rename your image file to match what the tool shows you (e.g. <code>my-post-slug.jpg</code>) and upload it to <code>/assets/images/blog/</code> in GitHub.</p>
+      <p class="sub">GitHub → Add file → Upload files → drag it into that folder → commit.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">5</div>
+    <div>
+      <h2>Add the post page</h2>
+      <p>Download the generated HTML file. In GitHub: Add file → Create new file → name it exactly <code>blog/your-slug/index.html</code> → paste the contents in → commit.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">6</div>
+    <div>
+      <h2>Update the entry list</h2>
+      <p>Copy the JSON snippet the tool generated. Open <code>blog/posts.json</code> in GitHub, click the pencil (edit) icon, and paste the new entry into the array — remember the comma before it.</p>
+      <div class="callout">Set <strong>entry_no</strong> to one higher than whatever's currently the highest number in the file — the tool can't know this by itself since it runs entirely in your browser.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">7</div>
+    <div>
+      <h2>Done</h2>
+      <p>No build step runs. GitHub Pages serves the new files within a minute or two of committing. Check <a href="https://kannan.ch/blog">kannan.ch/blog</a> to confirm it showed up.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Quick checklist</div>
+  <ul class="checklist">
+    <li>Image uploaded to <code>/assets/images/blog/[slug].[ext]</code></li>
+    <li>Post page committed at <code>blog/[slug]/index.html</code></li>
+    <li>New entry added to <code>posts.json</code>, with a corrected <code>entry_no</code></li>
+    <li>Blank line between every paragraph in the pasted text</li>
+    <li>Category matches one of the five: Technology, Process &amp; Data, Work, Entrepreneurship, Humanity</li>
+  </ul>
+
+  <footer>kannan.ch — publishing workflow, last set up alongside the growth-ring ledger redesign.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software in the AI Era: From SaaS to Open Source | Kannan Palani</title>
+<meta name="description" content="SaaS is not failing, but it is showing clear signs of slowing under its own weight.">
+<link rel="canonical" href="https://kannan.ch/blog/saasobituary/">
+<meta property="og:title" content="Software in the AI Era: From SaaS to Open Source">
+<meta property="og:description" content="SaaS is not failing, but it is showing clear signs of slowing under its own weight.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kannan.ch/blog/saasobituary/">
+<meta property="og:image" content="https://kannan.ch/assets/images/blog/saasobituary.avif">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Software in the AI Era: From SaaS to Open Source", "description": "SaaS is not failing, but it is showing clear signs of slowing under its own weight.", "datePublished": "2026-01-17", "author": {"@type": "Person", "name": "Kannan Palani", "url": "https://kannan.ch", "sameAs": ["https://www.linkedin.com/in/pkanns/", "https://vidai.ch", "https://mulai.ch", "https://twitter.com/pkanns"]}, "publisher": {"@type": "Person", "name": "Kannan Palani"}, "mainEntityOfPage": "https://kannan.ch/blog/saasobituary/", "image": "https://kannan.ch/assets/images/blog/saasobituary.avif", "keywords": "SaaS, Open Source, Technology"}</script>
+<script defer data-domain="kannan.ch" src="https://plausible.io/js/script.js"></script>
+<style>
+
+:root{
+  --paper:#EDE7D6; --paper-deep:#E4DCC5; --ink:#22261B; --ink-soft:#4A4F3E;
+  --moss:#3C5A41; --moss-deep:#2B4230; --mustard:#B98A2E; --rust:#8A3B28;
+  --rule: rgba(34,38,27,0.16);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:'Spectral',serif;-webkit-font-smoothing:antialiased;position:relative;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:0.05;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+.article-wrap{max-width:680px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+header{border-bottom:1px solid var(--rule);padding:20px 0;}
+header .wrap{display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:19px;font-weight:600;letter-spacing:-0.01em;}
+.logo em{font-style:italic;color:var(--moss);}
+nav.primary{display:flex;align-items:center;gap:30px;}
+nav.primary .links{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+nav.primary .links a.active{color:var(--ink);border-bottom:1.5px solid var(--mustard);padding-bottom:2px;}
+footer{border-top:1px solid var(--rule);padding:28px 0;margin-top:60px;}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+footer a:hover{color:var(--ink);}
+
+
+.backline{padding:22px 0 0;}
+.backline a{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px;}
+.backline a:hover{color:var(--ink);}
+article header.post-head{border:none;padding:26px 0 0;}
+.post-head .stamp-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);flex-wrap:wrap;}
+.post-head .cat-badge{color:var(--moss-deep);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--moss-deep);padding:3px 9px;border-radius:2px;}
+.post-head .date-badge{display:inline-block;border:1.5px solid var(--rust);color:var(--rust);font-weight:600;letter-spacing:0.03em;padding:3px 8px;transform:rotate(-2deg);border-radius:2px;}
+.post-head h1{font-size:38px;line-height:1.15;font-weight:600;margin:0 0 14px;letter-spacing:-0.01em;}
+.post-head .dek{font-size:17px;color:var(--ink-soft);line-height:1.6;margin:0 0 26px;max-width:58ch;}
+.hero-image{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-height:440px;overflow:hidden;margin-bottom:36px;}
+.hero-image img{width:100%;height:100%;object-fit:cover;display:block;}
+.post-body{font-size:18px;line-height:1.75;color:var(--ink);}
+.post-body p{margin:0 0 22px;}
+.post-body h2{font-size:24px;font-weight:600;margin:40px 0 16px;letter-spacing:-0.005em;}
+.post-body ul{margin:0 0 22px;padding-left:22px;}
+.post-body li{margin-bottom:8px;}
+.post-body blockquote{margin:28px 0;padding:4px 0 4px 22px;border-left:2px solid var(--mustard);font-style:italic;color:var(--ink-soft);}
+.share{margin-top:52px;padding-top:24px;border-top:1px dashed var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.share .label{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);letter-spacing:0.05em;text-transform:uppercase;}
+.share .icons{display:flex;gap:10px;}
+.share .icons a{width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .15s ease, color .15s ease;color:var(--ink-soft);}
+.share .icons a:hover{border-color:var(--moss-deep);color:var(--moss-deep);}
+.share .icons svg{width:16px;height:16px;}
+@media (max-width:760px){
+  .post-head h1{font-size:29px;}
+  .hero-image{max-height:260px;}
+  .post-body{font-size:16.5px;}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">Kannan <em>Palani</em></a>
+    <nav class="primary">
+      <div class="links"><a href="/">Home</a><a class="active" href="/blog">Blog</a></div>
+    </nav>
+  </div>
+</header>
+<div class="article-wrap">
+  <div class="backline"><a href="/blog">&larr; All entries</a></div>
+  <article>
+    <header class="post-head">
+      <div class="stamp-row">
+        <span class="cat-badge">Technology</span>
+        <span class="date-badge">17 JAN</span>
+        <span>3 min read</span>
+      </div>
+      <h1>Software in the AI Era: From SaaS to Open Source</h1>
+      <p class="dek">SaaS is not failing, but it is showing clear signs of slowing under its own weight.</p>
+    </header>
+    <div class="hero-image">
+      <img src="/assets/images/blog/saasobituary.avif" alt="Software systems in transition" loading="lazy">
+    </div>
+    <div class="post-body">
+      <p>For almost two decades, Software-as-a-Service stood at the center of enterprise innovation. It reshaped how organizations approached their core processes, whether in prospecting, sales, contracting, billing, cash collection, customer support, expense management, or accounting. SaaS applications brought modern interfaces, greater accessibility, and faster implementation cycles compared to their on-premise predecessors. They also introduced shared master data models that became widely adopted across industries, creating a level of standardization that would have been hard to achieve through traditional enterprise software.</p>
+      <p>Despite this, the early promise of SaaS began to unravel as real-world complexity caught up with the rigid simplicity these platforms were designed around. National legislation in areas like taxation, invoicing, and data privacy repeatedly disrupted the idea of a single global process. Vendors had to introduce country-specific exceptions, and over time, these multiplied. What started as clean, elegant systems became patchworks of regional logic layered on top of globally shared structures.</p>
+      <p>The pressure intensified when large enterprises, whose requirements rarely fit into standardized templates, became major customers. To win these high-value deals, SaaS companies were forced to allow extensive customizations. The more they adapted their once-rigid systems, the further they moved from the "one version for everyone" vision. Different clients ended up running different configurations, on different versions, often shaped by regulatory limitations that prevented new features from being implemented consistently. As the variations grew, the cost and complexity of maintaining the platforms increased.</p>
+      <p>Integration created another challenge. As SaaS vendors expanded horizontally, they began competing for ownership of the same business processes. Sales platforms and billing platforms overlapped; customer support platforms fought for the same master customer record; expense tools and HR suites clashed over workflows. This created duplicated features and fractured user journeys. At the same time, niche SaaS products emerged to solve hyper-specific micro-processes. Companies began purchasing dozens of small tools to handle tiny slices of a process. While this created flexibility, it also resulted in greater administrative burden, more application sprawl, and heavier user management workloads, especially in organizations with high employee turnover.</p>
+      <p>Commercially, SaaS gradually drifted toward a rent-seeking model. Although the subscription model promised pay-as-you-go flexibility, many SaaS companies priced their products much like traditional software licenses, often charging by seats regardless of actual usage. Scaling down was difficult, and in some cases, increasing consumption led to disproportionately higher costs. When major software giants started acquiring SaaS firms at high valuations, they did so assuming that existing contracts, or rather growth, would continue indefinitely. To justify these acquisition costs, they frequently raised prices year after year. Larger enterprises had the resources to switch platforms when prices became unreasonable, but small and mid-sized businesses often found themselves trapped.</p>
+      <p>The evolution of product updates also reflected deeper structural issues. Capabilities that customers once considered essential, such as real-time APIs, richer integrations, or advanced analytics, were moved behind additional paywalls. Vendors often found it easier to build entirely new product lines than to modernize older versions that were heavily customized. As a result, many SaaS platforms now exist in multiple generations, each tied to different technological eras and regulatory circumstances. Upgrading older versions became so difficult that some organizations preferred rebuilding their system from scratch rather than navigating a complex migration.</p>
+      <p>SaaS is not failing, but it is showing clear signs of slowing under its own weight. The model that once promised simplicity, lower costs, and rapid innovation now struggles to uphold those principles in the face of its accumulated complexity. While artificial intelligence is often positioned as the next major disruptor in software, I believe the real threat is the ease with which these applications can be replaced.</p>
+      <p>The more significant challenger, emerging quietly yet steadily, is open source, aided by AI of course. Open source does not require customers to accept rigid data models, opaque pricing, or vendor lock-in. It enables organizations to adapt software to their needs without being penalized for customizations. It allows transparent improvements, community-driven innovation, and genuine pay-for-value economics. With flexible deployment, self-hosting options, and growing professional support ecosystems, open source presents a level of freedom and sustainability that SaaS increasingly struggles to match.</p>
+      <p>SaaS changed how the world uses software, and its contributions remain enormous. But as the model matures and its limitations become more visible, open source, aided rather than led by AI, appears positioned as the more transformative and principled alternative for the next era of digital systems.</p>
+    </div>
+    <div class="share">
+      <span class="label">Share this entry</span>
+      <div class="icons">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://kannan.ch/blog/saasobituary/" aria-label="Share on LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v1.98h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.66c0-1.59-.03-3.63-2.21-3.63-2.22 0-2.56 1.73-2.56 3.52V23h-4V8.5z"/></svg>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://kannan.ch/blog/saasobituary/&text=Software in the AI Era: From SaaS to Open Source" aria-label="Share on X" title="X / Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.6l8.1-9.3L1 2h7l4.8 6.3L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+        </a>
+        <a href="#" aria-label="Copy link" title="Copy link" class="copy-link" data-url="https://kannan.ch/blog/saasobituary/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1.5-1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="wrap">
+    <div>© 2026 KANNAN PALANI</div>
+    <div style="display:flex;gap:18px;">
+      <a href="https://www.linkedin.com/in/pkanns/">LINKEDIN</a>
+      <a href="/blog/feed.xml">RSS</a>
+      <a href="https://twitter.com/pkanns">X</a>
+    </div>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.copy-link').forEach(function(el){
+  el.addEventListener('click', function(e){
+    e.preventDefault();
+    navigator.clipboard.writeText(el.dataset.url);
+    el.style.color = 'var(--moss-deep)';
+  });
+});
+</script>
+</body>
+</html>
