@@ -17,7 +17,7 @@ hr{border:0;border-top:3px solid var(--red);margin:0 0 22px}
 p{margin:0 0 14px}
 .ask{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:8px;padding:16px 18px;margin:24px 0}
 .ask b{display:block;margin-bottom:4px}
-.btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 8px}
+.btns{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0 8px}
 a.btn{display:block;text-align:center;text-decoration:none;font:700 17px/1.2 system-ui,sans-serif;padding:16px 10px;border-radius:10px;border:2px solid var(--red)}
 a.ja{background:var(--red);color:#fff}
 a.nei{color:var(--red);background:transparent}
@@ -41,28 +41,28 @@ footer{margin-top:30px;text-align:center}
 Söll d'Busse vo 90 Stütz erlaa werde, damit Familie Palani wieder z'Opfike ässe chunnt? <i>Chleinvieh macht au Mischt</i>, aber e zfriedeni Familie macht Umsatz. <i>Ändi guet, alles guet</i>, mit Frühlingsrolle statt Buess.</div>
 
 <div class="btns" id="btns">
-<a class="btn ja" id="ja" href="#">JA<small>d'Busse söll erlaa werde</small></a>
-<a class="btn nei" id="nei" href="#">NEI<small>Ordnig muess sii, 90 Stütz</small></a>
+<a class="btn ja" id="ja" href="#">Petition unterschriebe<small>Und dänn wählsch: Ja oder Nei</small></a>
 </div>
 <p class="note" id="note">Du gisch Vorname, Ortschaft und dini Stimm. Meh nöd.</p>
 
-<div class="share">
-<a id="wa" href="#">WhatsApp</a>
-<button id="sh" type="button">Teile</button>
+<p class="note" style="margin-top:26px">Ei Stimm isch en Aafang. Drü Stimme sind e Tischrunde.</p>
+<div class="share" style="margin-top:8px">
+<a id="wa" href="#">Petition teile: WhatsApp</a>
+<button id="sh" type="button">Petition teile: Link</button>
 </div>
 <footer class="note">Petitionsrecht: Art. 33 Bundesverfassig. Jede und jede dörf a d'Behörde schriibe.</footer>
 
 <script>
 // Paste the public form link here (Google Forms etc.). Empty = voting shows "coming soon".
 var FORM_URL="https://forms.gle/Bpc9zB1zAmEBaUrz8";
-var ja=document.getElementById('ja'),nei=document.getElementById('nei');
-if(FORM_URL){ja.href=FORM_URL;nei.href=FORM_URL;ja.target=nei.target="_blank";ja.rel=nei.rel="noopener"}
+var ja=document.getElementById('ja');
+if(FORM_URL){ja.href=FORM_URL;ja.target="_blank";ja.rel="noopener"}
 else{document.getElementById('btns').classList.add('off');document.getElementById('note').textContent="D'Abstimmig startet gli. Bitte churz warte."}
 var msg="Petition: s'Schimpfe zum Luxusguet. Stimm mit: söll d'Busse erlaa werde? ";
 document.getElementById('wa').href="https://wa.me/?text="+encodeURIComponent(msg);
 document.getElementById('wa').target="_blank";
 document.getElementById('sh').onclick=function(){
  try{if(navigator.share){navigator.share({title:document.title,text:msg,url:location.href});return}}catch(e){}
- try{navigator.clipboard.writeText(msg+location.href);this.textContent="Kopiert!"}catch(e){}
+ try{navigator.clipboard.writeText(msg+location.href);this.textContent="Link kopiert!"}catch(e){}
 };
 </script></main></body></html>
