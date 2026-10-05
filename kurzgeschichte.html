@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de-CH"><head><meta charset="utf-8">
+<meta name="copyright" content="© 2026 Alpina. Alle Rächt vorbehalte.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>s'Schimpfe zum Luxusguet</title>
+<style>
+:root{--bg:#fbf7f4;--ink:#222;--mute:#777;--red:#c8102e;--card:#fff;--line:#e4dcd6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#181514;--ink:#eee;--mute:#a99;--red:#ff4d67;--card:#242020;--line:#3a3331}}
+:root[data-theme="dark"]{--bg:#181514;--ink:#eee;--mute:#a99;--red:#ff4d67;--card:#242020;--line:#3a3331}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Georgia,'Times New Roman',serif}
+main{max-width:640px;margin:0 auto;padding:28px 20px 40px}
+.tag{font:600 12px/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red);text-align:center}
+h1{font-size:34px;line-height:1.15;text-align:center;margin:10px 0 4px}
+.sub{text-align:center;color:var(--red);font-style:italic;margin:0 0 18px}
+hr{border:0;border-top:3px solid var(--red);margin:0 0 22px}
+p{margin:0 0 14px}
+.ask{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:8px;padding:16px 18px;margin:24px 0}
+.ask b{display:block;margin-bottom:4px}
+.btns{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0 8px}
+a.btn{display:block;text-align:center;text-decoration:none;font:700 17px/1.2 system-ui,sans-serif;padding:16px 10px;border-radius:10px;border:2px solid var(--red)}
+a.ja{background:var(--red);color:#fff}
+a.nei{color:var(--red);background:transparent}
+a.btn small{display:block;font-weight:400;font-size:12px;margin-top:4px;opacity:.9}
+.off{opacity:.45;pointer-events:none}
+.note{font:13px/1.5 system-ui,sans-serif;color:var(--mute);text-align:center}
+.share{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.share a,.share button{font:600 14px system-ui,sans-serif;padding:10px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;cursor:pointer}
+footer{margin-top:30px;text-align:center}
+</style></head><body><main>
+<div class="tag">Kurzgschicht · Opfike · Glattbrugg</div>
+<h1>s'Schimpfe zum Luxusguet</h1>
+<p class="sub">Dä Fall vom gälbe Parkfäld</p><hr>
+
+<p>Es isch einisch e Familie Alpina gsi: drü Mönsche, en Hunger und en graue Wage. Nach 17 Jahr Opfiker Treui wänd sie i Peking Garden. Aber s'Parkplätzli isch voll. <i>Hunger isch de beschti Choch, leider nöd de beschti Parkwächter.</i></p>
+<p>Also gägenüber, bi de Poscht. Poschtchund isch er ja. <i>Wer suecht, dä findet</i>, und wer findet, dä zahlt.</p>
+<p>Nach 45 Minute: es Zettäli. <b>90 Stütz!</b> Für es Znacht vo CHF 55.30. De Parkplatz tüürer als s'Ässe. Da chunnt eim s'Ässe grad wieder hoch.</p>
+<p>Reklamiere goht nume für 3.50 pro Minute. Do wird sogar <b>s'Schimpfe zum Luxusguet</b>.</p>
+
+<div class="share" style="margin-top:26px">
+<a id="wa" href="#">Gschicht teile: WhatsApp</a>
+<button id="sh" type="button">Gschicht teile: Link</button>
+</div>
+<footer class="note">© 2026 Alpina. Alle Rächt vorbehalte. Nachdruck und Wiiterverbreitig nume mit schriftlicher Zueschtimmig.</footer>
+
+<script>
+var msg="s'Schimpfe zum Luxusguet: e churzi Gschicht us Opfike. ";
+document.getElementById('wa').href="https://wa.me/?text="+encodeURIComponent(msg);
+document.getElementById('wa').target="_blank";
+document.getElementById('sh').onclick=function(){
+ try{if(navigator.share){navigator.share({title:document.title,text:msg,url:location.href});return}}catch(e){}
+ try{navigator.clipboard.writeText(msg+location.href);this.textContent="Link kopiert!"}catch(e){}
+};
+</script></main></body></html>
